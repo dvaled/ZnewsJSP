@@ -19,7 +19,7 @@ public class ProductModel {
 
     public void setPublish(String publish_date) {
         String[] splitted = publish_date.split("/");
-        publish_date = splitted[2] + "-" + splitted[0] + "-" + splitted[1];
+        publish_date = splitted[2] + "-" + splitted[1] + "-" + splitted[0];
         
         this.publish_date = publish_date;
     }

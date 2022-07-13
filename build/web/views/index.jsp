@@ -41,7 +41,8 @@
         <main class="flex-shrink-0">
             <div class="container">
                 <h1 class="mt-5">Znews</h1>
-                <p class="lead"></p>
+                <h1 class="mt-5">Hello, <%= request.getSession(true).getAttribute("name") %></h1>
+                <p class="lead">Welcome to the znews writer app! You are logged in using username: <strong><%= request.getSession().getAttribute("username") %></strong></p>
                 <div class="row pt-5">
                     <div class="col-6">
                         <form action="index" method="GET">
@@ -88,8 +89,16 @@
                                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                         </form>
                                 </td>
+                                <td>
+                                    <a href="read?id=<%= rs.getString("id") %>" class="btn btn-sm btn-info">read</a>
+                                </td>
                             </tr>
                             <% } %>
+                            <tr>
+                                <td>
+                                    <a href="create" class="btn btn-sm btn-info">Write News</a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

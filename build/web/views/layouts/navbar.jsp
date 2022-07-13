@@ -15,13 +15,18 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" href="create">Tulis Berita</a>
+            <a class="nav-link" href="writer">Writer</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index" >Tampilan Admin</a>
+          </li>
+          <li class="">
+              <form action="logout" method="POST" onsubmit="return confirm('Are you sure want to Logout from this account')">
+              <button type="submit" class="btn btn-sm btn-danger">Logout</button>
+              </form>
           </li>
         </ul>
         <form class="d-flex" role="search">

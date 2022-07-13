@@ -75,6 +75,9 @@
                             <tr>
                                 <td><%= rs.getString("content_type") %></td>
                                 <td><%= rs.getString("publish_date") %></td>
+                                <td>
+                                    <a href="read?id=<%= rs.getString("id") %>" class="btn btn-sm btn-info">read</a>
+                                </td>
                             </tr>
                             <% } %>
                         </tbody>

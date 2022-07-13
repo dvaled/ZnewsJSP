@@ -1,11 +1,10 @@
 <%-- 
-    Document   : index
-    Created on : Jul 11, 2022, 9:21:29 AM
+    Document   : writer
+    Created on : Jul 13, 2022, 2:26:32 PM
     Author     : DAVA
 --%>
 
-
-<%@page import="Controller.ProductController"%>
+<%@page import="Controller.WriterController"%>
 <%@page import="java.sql.ResultSet"%>
 <%--<%@ taglib prefix="c" uri="http://java.sun/com/jstl/core" %>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,7 +20,7 @@
         <jsp:include page='layouts/navbar.jsp'></jsp:include>
 
         <%
-            ProductController pc = new ProductController();
+            WriterController wc = new WriterController();
 
             String search = "";
             ResultSet rs;
@@ -31,9 +30,9 @@
             } 
 
             if (search.equals("")) {
-                rs = pc.get();
+                rs = wc.get();
             } else {
-                rs = pc.getByName(search);
+                rs = wc.getByName(search);
             }
         %>
 
@@ -71,32 +70,23 @@
                         <tbody>
                             <% while(rs.next()) { %>
                             <tr>
-                                <td><%= rs.getString("news_name") %></td>
-                                <td><%= rs.getString("description") %></td>
-                            </tr>
-                            <tr>
-                                <td><%= rs.getString("content_type") %></td>
-                                <td><%= rs.getString("publish_date") %></td>
+                                <td><%= rs.getString("name") %></td>
+                                <td><%= rs.getString("bagian") %></td>
+                                <td><%= rs.getString("username") %></td>
+                                <td><%= rs.getString("password") %></td>
+                                <td>Di daftarkan oleh: <%= rs.getString("registerd_by_name") %></td>
                                 
                                 <td>
-                                    <a href="edit?id=<%= rs.getString("id") %>" class="btn btn-sm btn-info">Edit</a>
+                                    <a href="#" class="btn btn-sm btn-info">Edit</a>
                                 </td>
                                 <td>
-                                     <form action="delete?id=<%= rs.getString("id") %>" method="POST"
-                                              onsubmit="return confirm('Are you sure want to delete the data?')"
-                                        >
-                                            <input type="hidden" name="id" value="<%= rs.getString("id")%>" />
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                        </form>
-                                </td>
-                                <td>
-                                    <a href="read?id=<%= rs.getString("id") %>" class="btn btn-sm btn-info">read</a>
+                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <% } %>
                             <tr>
                                 <td>
-                                    <a href="create" class="btn btn-sm btn-info">Write News</a>
+                                    <a href="#" class="btn btn-sm btn-sm">Register New Writer</a>
                                 </td>
                             </tr>
                         </tbody>
